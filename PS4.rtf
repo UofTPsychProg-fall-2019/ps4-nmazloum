@@ -1,0 +1,84 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf610
+{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww20580\viewh11400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 1. My study will examine the relationship between cumulative eye movement sampling, the eye movement repetition effect, subsequent memory, and the hippocampal system among healthy younger adults, and healthy older adults who have varying cognitive abilities. Eye movement measures will be monitored in two phases: a study phase and a surprise test phase, while participants view single faces across multiple blocks. Each face may be displayed from the same viewpoint in both phases or from a different viewpoint across the blocks in each phase. The number of fixations, location of fixations, accuracy of response, and reaction time will be analyzed. \
+\
+The study phase consists of five study blocks. In each study block, the same eighty faces (half female) are shown for four seconds each. Forty faces are presented in the identical viewpoint (fixed condition) and forty faces are shown in the varying viewpoint (variable condition) in each study block. Faces with the identical viewpoint counterbalance faces with the varying viewpoint across participants. Using the left and right arrow keys on a computer keyboard, the participants are asked to show whether the face they saw is male or female. Each participant\'92s response times are noted, and their eye movements are tracked while they passively study the faces. Next, in the surprise test phase, a recognition memory test is administered. In this test, 160 faces are shown to the participants: 80 previously viewed and 80 new faces. Each face is displayed for three seconds, and the participants are asked to verbally say whether or not they had viewed it during the study phase using a five point likert scale. \
+\
+2.  \
+\
+
+\b Study phase:
+\b0 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 	subject = input() \
+\
+if is_even(subject)\
+	response_keys = [\'911\'92 ,\'922\'92] #counterbalance responses, 1= male, 2 = female\
+else\
+	response_keys = [\'912\'92,\'921\'92] \
+\
+Read in stimulus (400 images across 5 blocks). In each study block, the same eighty faces (half female) are shown. Forty faces are presented in the identical viewpoint (fixed condition) and forty faces are shown in the varying viewpoint (variable condition) in each study block. \
+	\
+stim_female = read_directory(\'91female_faces/*.png\'92) #reading in female faces. In each study block, the same eighty faces (half female) are shown.\
+stim_male = read_directory(\'91male_faces/*.png\'92) #reading in male faces. In each study block, the same eighty faces (half male) are shown.\
+shuffle(stim_female) #random trial sequence\
+shuffle(stim_male) #random trial sequence\
+\
+\
+for block in range(5) #there are 5 blocks with 80 trials in each block\
+	trials = [80] \
+\expnd0\expndtw0\kerning0
+print out shuffled list of stimuli during the experiment\kerning1\expnd0\expndtw0 \
+\
+\
+If face = identical viewpoint then    #Forty faces are presented in the identical viewpoint (fixed condition) and forty faces are shown in the varying viewpoint (variable condition) in 					                  each study block. Faces with the identical viewpoint counterbalance faces with the varying viewpoint across participants.\
+	\
+present identical viewpoint\
+\
+else\
+\
+present variable viewpoint\
+\
+\
+\
+for trial in trials\
+	response = record_keyboard(response_keys) #collect response during stimulus\
+	display_fixation(4000-trial[1]) #each trial 4s\
+\
+calculate percent number of eye fixations within ROI\
+calculate percent time duration of eye fixations within ROI\
+calculate reaction time for each response\
+calculate accuracy of each response\
+\
+\
+
+\b Test phase:
+\b0 \
+\
+	subject = input() #same counterbalance as study phase\
+\
+stim_faces = read_directory(\'91faces/*.png\'92) #choose same counterbalance as study phase\
+\
+for block in range(1) #there is 1 block with 160 trials\
+	trials = [160] \
+\expnd0\expndtw0\kerning0
+print out shuffled list of stimuli during this phase. In this phase,\kerning1\expnd0\expndtw0  160 faces are shown to the participants: 80 previously viewed and 80 new faces.\
+\
+for trial in trials\
+	display_fixation(3000-trial[1]) #each trial is 3s, participant responds verbally in this phase\
+\
+\
+calculate percent number of eye fixations within ROI\
+calculate percent time duration of eye fixations within ROI\
+calculate accuracy of each response
+\fs24 \
+	
+\fs28 \
+}
